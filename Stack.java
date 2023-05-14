@@ -1,3 +1,8 @@
+/**
+ * @author Jaankee
+ * @version 1.2
+ * Creates Stack Class
+ */
 public class Stack<T>{ 
 
     private static class Node<T>{

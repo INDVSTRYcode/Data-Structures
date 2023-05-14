@@ -82,46 +82,6 @@ public class Queue<T>{
 
     }
 
-    public void swap(T existingData, T newData){
-        // Start at the head
-        Node<T> currentNode = head;
-            
-        // Traverse the list until either the end or the data is found
-        while(currentNode != null && !(currentNode.getData().equals(existingData))) currentNode = currentNode.getNext();
-        
-        // Only insert if the item was found
-        if(currentNode != null) {
-    
-            //if there is another node in line, replace current node
-    
-            Node<T> lastNode = head;
-
-            currentNode = head.getNext();
-            
-            // Run until last element
-            while(currentNode.getNext() != null) {
-
-                lastNode = currentNode;
-
-                currentNode = currentNode.getNext();
-                
-            }
-            
-            // Set the second-last element's pointer to null
-            lastNode.setNext(null);
-
-            Node<T> nextNode = currentNode.getNext();
-
-            Node<T> newNode = new Node<T>(newData);
-
-            currentNode.setNext(newNode);
-
-            newNode.setNext(nextNode);
-
-        }
-        
-    }
-
     public void fillQueue(int x, Queue<Integer> queue){
 
         for(int y = 0; y < x; y++){

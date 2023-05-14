@@ -1,3 +1,8 @@
+/**
+ * @author Jaankee
+ * @version 1.2
+ * Creates Queue Class
+ */
 import java.lang.Math;
 public class Queue<T>{
 

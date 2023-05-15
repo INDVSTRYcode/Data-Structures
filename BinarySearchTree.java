@@ -9,7 +9,7 @@ public class BinarySearchTree{
 
     private int data;
 
-    private Node root;
+    private Node root; //first node in tree
     
     private static class Node{
 
@@ -132,6 +132,8 @@ public class BinarySearchTree{
     }
 
     public int findSmallestValue(Node root) {
+        
+        //recursive search down left path for smallest node
 
         return root.getLeftNode() == null ? root.getData() : findSmallestValue(root.getLeftNode());
 
@@ -139,26 +141,33 @@ public class BinarySearchTree{
 
     public Node deleteNodeRecursion(Node current, int data){
 
-        if(current == null) return null;
+        if(current == null) return null; //if no node exists, nice
 
         if (data == current.getData()){
 
             if(current.getLeftNode() == null && current.getRightNode() == null){
+                
+                //if desired node is found and has no children, nice
 
                 return null;
 
             } else if (current.getLeftNode() == null) {
                 
+                //if node is found and only has right child, replace with right child
+                
                 return current.getRightNode();
 
             } else if (current.getRightNode() == null) {
+                
+                //if node is found and only has left child, replace with left child
 
                 return current.getLeftNode();
+                
             }
 
-            int smallestValue = findSmallestValue(current.getRightNode());
+            int smallestValue = findSmallestValue(current.getRightNode()); //finds smallest node
 
-            current.setData(smallestValue);
+            current.setData(smallestValue);  //don't fully know what's going on here
 
             current.setNext("right", deleteNodeRecursion(current.getRightNode(), smallestValue));
             
@@ -170,13 +179,13 @@ public class BinarySearchTree{
 
             current.setNext("left", deleteNodeRecursion(current.getLeftNode(), data));
 
-            return current;
+            return current; // or here
 
         }
 
         current.setNext("right", deleteNodeRecursion(current.getRightNode(), data));
 
-        return current;
+        return current; //or here
 
     }
 

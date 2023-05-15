@@ -110,16 +110,22 @@ public class BinarySearchTree{
     }
 
     public void add(int data) {
+        
+        //commence recursive sorting addition at the root
 
         root = insertElement(data, root);
 
     }
 
     public boolean containsNodeRecursion(Node current, int data){
+        
+        //looks for node
 
-        if(current == null) return false;
+        if(current == null) return false; //if there is no node return false
 
-        if (data == current.getData()) return true;
+        if (data == current.getData()) return true; //if node is found return true
+        
+        //if node data is smaller than target data, go down the right tree. if node data is larger, go down left tree.
 
         return data > current.getData() ? containsNodeRecursion(current.getRightNode(), data) : containsNodeRecursion(current.getLeftNode(), data);
 
